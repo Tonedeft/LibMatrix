@@ -37,11 +37,40 @@ public:
 		return mat[row][col];
 	}
 
+	void zero()
+	{
+		memset(mat, 0, sizeof(mat));
+	}
+	// TODO: Need Square Matrix to define "identity()"
+	// TODO: Need symmetric matrix
+
 	// Arithmetic operators
 	Matrix& operator=(const Matrix& rhs)
 	{
 		// TODO: Ensure &rhs != this?
 		memcpy(mat, rhs.mat, sizeof(mat));
+		return *this;
+	}
+	Matrix& operator+=(const Matrix& rhs)
+	{
+		for (int i = 0; i < ROWS; ++i)
+		{
+			for (int j = 0; j < COLUMNS; ++j)
+			{
+				mat[i][j] += rhs.mat[i][j];
+			}
+		}
+		return *this;
+	}
+	Matrix& operator-=(const Matrix& rhs)
+	{
+		for (int i = 0; i < ROWS; ++i)
+		{
+			for (int j = 0; j < COLUMNS; ++j)
+			{
+				mat[i][j] -= rhs.mat[i][j];
+			}
+		}
 		return *this;
 	}
 

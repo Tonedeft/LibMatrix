@@ -29,5 +29,10 @@ int main()
 	mat2x2.print();
 	mat2x2 = mat2x2;
 	mat2x2.print();
+
+	mat2x2 += mat2x2_2;
+	mat2x2.print();
+	mat2x2 -= mat2x2_2;
+	mat2x2.print();
 	return 0;
 }
