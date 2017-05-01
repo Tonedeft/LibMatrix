@@ -2,10 +2,11 @@
 
 #include <iostream>
 
+typedef int MYTYPE;
+
 template <int ROWS, int COLUMNS>
 class Matrix
 {
-	typedef int MYTYPE;
 
 private:
 	// TODO: Array of arrays? Would allow for double indexing.
@@ -94,6 +95,8 @@ public:
 	friend Matrix<ROWS, COLUMNS> operator+(const Matrix<ROWS, COLUMNS>& lhs, const Matrix<ROWS, COLUMNS>& rhs);
 	template <int ROWS, int COLUMNS>
 	friend Matrix<ROWS, COLUMNS> operator-(const Matrix<ROWS, COLUMNS>& lhs, const Matrix<ROWS, COLUMNS>& rhs);
+	template <int ROWS, int MID, int COLUMNS>
+	friend Matrix<ROWS, COLUMNS> operator*(const Matrix<ROWS, MID>& lhs, const Matrix<MID, COLUMNS>& rhs);
 };
 
 template <int ROWS, int COLUMNS>
@@ -118,6 +121,24 @@ Matrix<ROWS, COLUMNS> operator-(const Matrix<ROWS, COLUMNS>& lhs, const Matrix<R
 		for (int j = 0; j < COLUMNS; ++j)
 		{
 			result.mat[i][j] -= rhs.mat[i][j];
+		}
+	}
+	return result;
+}
+template <int ROWS, int MID, int COLUMNS>
+Matrix<ROWS, COLUMNS> operator*(const Matrix<ROWS, MID>& lhs, const Matrix<MID, COLUMNS>& rhs)
+{
+	Matrix<ROWS, COLUMNS> result;
+	for (int i = 0; i < ROWS; ++i)
+	{
+		for (int j = 0; j < COLUMNS; ++j)
+		{
+			MYTYPE rowaccum = 0;
+			for (int k = 0; k < MID; ++k)
+			{
+				rowaccum += lhs.mat[i][k] * rhs.mat[k][j];
+			}
+			result.mat[i][j] = rowaccum;
 		}
 	}
 	return result;
