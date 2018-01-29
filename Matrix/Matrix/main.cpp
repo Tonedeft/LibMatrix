@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "Matrix.h"
+#include "AugmentedMatrix.h"
 
 int test_multiply()
 {
@@ -20,6 +21,44 @@ int test_multiply()
 	Matrix<2, 2> AB = A*B;
 	(AB).print();
 	(BA).print();
+
+	return 0;
+}
+
+int test_gauss()
+{
+	AugmentedMatrix<3, 4> A;
+	A(0, 0) = 1;
+	A(0, 1) = 2;
+	A(0, 2) = 1;
+	A(0, 3) = 1;
+	A(1, 0) = 3;
+	A(1, 1) = 1;
+	A(1, 2) = 4;
+	A(1, 3) = 0;
+	A(2, 0) = 2;
+	A(2, 1) = 2;
+	A(2, 2) = 3;
+	A(2, 3) = 2;
+	A.print();
+	A.gaussianElimination().print();
+
+
+	AugmentedMatrix<3, 4> B;
+	B(0, 0) = 1;
+	B(0, 1) = 1;
+	B(0, 2) = 1;
+	B(0, 3) = 1;
+	B(1, 0) = 4;
+	B(1, 1) = 3;
+	B(1, 2) = 5;
+	B(1, 3) = 7;
+	B(2, 0) = 2;
+	B(2, 1) = 1;
+	B(2, 2) = 3;
+	B(2, 3) = 5;
+	B.print();
+	B.gaussianElimination().print();
 
 	return 0;
 }
@@ -55,5 +94,6 @@ int main()
 	mat2x2.print();
 
 	test_multiply();
+	test_gauss();
 	return 0;
 }

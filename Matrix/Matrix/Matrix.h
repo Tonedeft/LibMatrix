@@ -2,13 +2,13 @@
 
 #include <iostream>
 
-typedef int MYTYPE;
+typedef double MYTYPE;
 
 template <int ROWS, int COLUMNS>
 class Matrix
 {
 
-private:
+public:
 	// TODO: Array of arrays? Would allow for double indexing.
 	MYTYPE mat[ROWS][COLUMNS] = {};
 
@@ -83,7 +83,7 @@ public:
 			printf("[");
 			for (int j = 0; j < COLUMNS; ++j)
 			{
-				printf("%3d, ", mat[i][j]);
+				printf("%3.1lf, ", mat[i][j]);
 			}
 			printf("],\n ");
 		}
