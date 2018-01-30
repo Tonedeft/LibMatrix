@@ -60,6 +60,48 @@ int test_gauss()
 	B.print();
 	B.gaussianElimination().print();
 
+
+	AugmentedMatrix<3, 4> C;
+	C(0, 0) = 1;
+	C(0, 1) = 1;
+	C(0, 2) = 1;
+	C(0, 3) = 1;
+	C(1, 0) = 4;
+	C(1, 1) = 3;
+	C(1, 2) = 5;
+	C(1, 3) = 7;
+	C(2, 0) = 2;
+	C(2, 1) = 1;
+	C(2, 2) = 3;
+	C(2, 3) = 6;
+	C.print();
+	C.gaussianElimination().print();
+
+
+	AugmentedMatrix<4, 5> D;
+	D(0, 0) = 4;
+	D(0, 1) = 5;
+	D(0, 2) = 3;
+	D(0, 3) = 3;
+	D(0, 4) = 1;
+	D(1, 0) = 1;
+	D(1, 1) = 1;
+	D(1, 2) = 1;
+	D(1, 3) = 1;
+	D(1, 4) = 0;
+	D(2, 0) = 2;
+	D(2, 1) = 3;
+	D(2, 2) = 1;
+	D(2, 3) = 1;
+	D(2, 4) = 1;
+	D(3, 0) = 5;
+	D(3, 1) = 7;
+	D(3, 2) = 3;
+	D(3, 3) = 3;
+	D(3, 4) = 2;
+	D.print();
+	D.gaussianElimination().print();
+
 	return 0;
 }
 
